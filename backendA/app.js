@@ -15,7 +15,7 @@ const adminRouter = require("./routes/admin")
 const programRouter = require("./routes/program")
 
 const app = express()
-
+require('dotenv').config()
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "jade")
 

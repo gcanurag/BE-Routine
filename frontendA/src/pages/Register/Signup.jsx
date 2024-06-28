@@ -5,15 +5,18 @@ import axios from "axios";
 import "./Login.css";
 import { backendUrl } from "../../utils/utils";
 
-export default function Login() {
+export default function Signup() {
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   // const { user, setUser } = useContext(UserContext);
 
   axios.defaults.withCredentials = true;
   // axios.defaults.headers.common["x-auth-token"];
 
- 
+  function handleUsernameInput(event) {
+    setUsername(event.target.value);
+  }
 
   function handlePasswordInput(event) {
     setPassword(event.target.value);
@@ -21,12 +24,12 @@ export default function Login() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(email, password);
+    console.log(username, password,email);
     const { data: userData } = await axios({
       method: "POST",
-      data: { email, password },
+      data: { username,email, password },
       withCredentials: true,
-      url: backendUrl + "/user/login",
+      url: backendUrl + "/user/register",
     });
 
     if (userData) {
@@ -40,9 +43,18 @@ export default function Login() {
   return (
     <div>
       <div id="wrap" className="wrapper">
-        <div className="title">Login</div>
+        <div className="title">Signup</div>
         <form onSubmit={handleSubmit}>
-         <div className="field">
+          <div className="field">
+            <input
+              type="text"
+              required
+              onChange={handleUsernameInput}
+              autoFocus
+            />
+            <label>User Name</label>
+          </div>
+          <div className="field">
             <input
               type="email"
               required
@@ -51,7 +63,6 @@ export default function Login() {
             />
             <label>Email</label>
           </div>
-
 
           <div className="field">
             <input type="password" required onChange={handlePasswordInput} />
@@ -63,18 +74,15 @@ export default function Login() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-
-            <div className="pass-link">
-              <a href="/login">Forgot password?</a>
-            </div>
           </div>
 
           <div className="field">
-            <input type="submit" value="Login" />
+            <input type="submit" value="Signup" />
           </div>
-          <div className="signup-link">
+          {/* <div className="signup-link">
             Not a member? <a href="/login">Signup now</a>
-          </div>
+          </div> */}
+                  {/* TODO */}
         </form>
       </div>
     </div>

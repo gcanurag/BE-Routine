@@ -31,18 +31,13 @@ import Teacher from "./pages/Teacher/Teacher";
 import ReactGa from "react-ga";
 import "antd/dist/antd.css";
 import "./App.css";
-
+import Signup from "./pages/Register/Signup";
 const { Header, Content } = Layout;
 
 function App() {
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   ReactGa.initialize("UA-174022278-1");
-  //   ReactGa.pageview("/");
-  // });
-
+  const[]
   return (
+    
     <Layout className="mainLayout">
       <Header
         className="site-layout-sub-header-background"
@@ -60,25 +55,19 @@ function App() {
           margin: "24px 16px 0",
           marginTop: "50px",
           height: "100vh",
-          //overflowY: "scroll",
           alignContent: "center",
         }}
       >
+        
         <div className="site-layout-background" style={{ padding: 24 }}>
-          {/* <UserContext.Provider value={{ user, setUser }}> */}
           <Router primary={false}>
             <AppHome exact path="/" />
             <Routine path="/routine" />
             <Login path="/user/login" />
-            {/* <Profile path="/user/profile" /> */}
+            <Signup path="/user/signup" />
             <Admin exact path="/user/admin" />
-            {/* <AllThings path="/user/admin/all" /> */}
             <ImpoExpo path="/user/admin/ie" />
             <LecturePage path="/user/lecture" />
-            {/* <Class path="/user/admin/class" /> */}
-            {/* <LabPage path="/user/admin/labs" /> */}
-            {/* <AddPage path="/user/admin/edit" /> */}
-            {/* <AddPage path="/user/admin/add" /> */}
             <Teacher path="/user/admin/teacher" />
             <Program path="/user/admin/program" />
             <AddTeacher path="/user/admin/addTeacher" />
@@ -88,12 +77,8 @@ function App() {
             <EditTeacher path="/user/admin/editTeacher/:id"></EditTeacher>
             <EditClass path="/user/admin/editClass/:id"></EditClass>
           </Router>
-          {/* </UserContext.Provider> */}
         </div>
       </Content>
-      {/* <Footer style={{}}>
-        <AppFooter />
-      </Footer> */}
     </Layout>
   );
 }

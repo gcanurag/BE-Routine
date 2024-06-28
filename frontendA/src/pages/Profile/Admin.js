@@ -60,6 +60,8 @@ function RoutineTable(props) {
     }
   }
 
+ 
+
 
   useEffect(()=>{
     if (res && res.data) {
@@ -186,14 +188,12 @@ function RoutineTable(props) {
           classTable[rowNo][columnNo] = {
             data: undefined, rowSpan: 1, colSpan: 1, open:false
           } 
-          console.log(classTable[rowNo][columnNo])
         }
       }
 
     }
 
-    console.log("table");
-    console.log(classTable);
+    
 
     return classTable;
   }

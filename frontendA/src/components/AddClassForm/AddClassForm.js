@@ -17,6 +17,7 @@ import "antd/dist/antd.css";
 
 import { apiClassUrl, apiTeacherUrl, apiProgramUrl, apiSubjectUrl } from "../../utils/utils";
 import { subjects } from "../../utils/utils";
+import CloseButton from "./CloseButton";
 
 const { Option } = Select;
 const layout = {
@@ -173,6 +174,10 @@ class AddClassPopupForm extends Component {
     return true;
   }
 
+   handleClose = () => {
+     Modal.destroyAll();
+  }
+
   render() {
     const {
       teacherData,
@@ -181,8 +186,9 @@ class AddClassPopupForm extends Component {
 
 
     return (
-      <div>
-        <Form
+      <div className="relative">
+        <div >
+          <Form
           {...layout}
           ref={this.formRef}
           name="control-ref"
@@ -210,16 +216,8 @@ class AddClassPopupForm extends Component {
           <Form.Item
             name="subjectName"
             label="Subject"
-            rules={[
-              {
-                required: true,
-                message: "Please enter Subject Name",
-              },
-            ]}
-          >
-            <Select
-              showSearch
-              optionFilterProp="label"
+            rules={[{required: true,message: "Please enter Subject Name",},]}>
+            <Select showSearch optionFilterProp="label"
               onChange={(value) => {
                 console.log("value",value)
                 this.setState({ selectedSubjectID: value })
@@ -258,11 +256,9 @@ class AddClassPopupForm extends Component {
           >
             <Select
               mode="multiple"
-              // placeholder="Select a option and change input text above"
               optionFilterProp="label"
               onChange={(values) => {
                 console.log(values)
-                // this.handleTeacherSelection(values);
               }}
               dropdownAlign="bottom"
             >
@@ -305,14 +301,21 @@ class AddClassPopupForm extends Component {
           <Form.Item {...tailLayout}>
             <Button
               type="primary"
-              style={{ backgroundColor: "#141414" }}
+              className="bg-slate-500 ml-2"
               htmlType="submit"
               // onClick={this.onFinish}
             >
               Submit
             </Button>
+            <Button
+              className="ml-2"
+              onClick={()=>Modal.destroyAll()}
+            >
+              Cancel
+            </Button>
           </Form.Item>
         </Form>
+        </div>
       </div>
     );
   }

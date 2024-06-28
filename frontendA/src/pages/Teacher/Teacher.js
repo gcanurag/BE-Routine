@@ -118,6 +118,9 @@ export class Teacher extends Component {
 
     return (
       <div>
+         <h1 className="text-9xl text-slate-600 font-extrabold  underline">
+      Hello world!
+    </h1>
         <Link to="/user/admin/addTeacher">
           <Button type="primary">Add Teacher</Button>
         </Link>
