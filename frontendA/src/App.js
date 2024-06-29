@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
-// import { Router, Link } from "@reach/router";
-// import { Layout, Menu, Button } from "antd";
-import { Router } from "@reach/router";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { Layout } from "antd";
-
-
-// import { UserContext } from "./components/Contexts/UserContext";
 import Login from "./pages/Login/Login";
-// import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Profile/Admin";
-// import LabPage from "./pages/LabPage/LabPage";
-// import AddPage from "./pages/AddPage/AddPage";
-// import AllThings from "./pages/AllThings/AllThings";
 import ImpoExpo from "./pages/ImpoExpo/ImpoExpo";
 import LecturePage from "./pages/LecturePage/LecturePage";
-// import AddClass from './pages/AddClass/AddClass';
-// import Class from "./pages/AddClass/AddClass";
 import AppHeader from "./components/Common/Header";
-// import AppFooter from "./components/Common/Footer";
 import AppHome from "./components/Home/Home";
 import Routine from "./pages/Routine/Routine";
 import AddTeacher from "./components/AddTeacher/AddTeacher";
@@ -35,51 +28,67 @@ import Signup from "./pages/Register/Signup";
 const { Header, Content } = Layout;
 
 function App() {
-  
+
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    };
+
+    const token = getCookie("cookieToken");
+    setToken(token);
+    console.log(token);
+  }, []);
+
+
   return (
+   
+      <Layout className="mainLayout">
+        <Header
+          className="site-layout-sub-header-background"
+          style={{
+            padding: 0,
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <AppHeader />
+        </Header>
+        <Content
+          style={{
+            margin: "24px 16px 0",
+            marginTop: "50px",
+            height: "100vh",
+            alignContent: "center",
+          }}
+        >
+          <div className="site-layout-background" style={{ padding: 24 }}>
+            <Routes>
+              <Route exact path="/" element={<AppHome />} />
+              <Route path="/routine" element={<Routine />} />
+              <Route path="/user/login" element={<Login />} />
+              <Route path="/user/signup" element={<Signup />} />
+              <Route path="/user/admin" element={<Admin />} />
+              <Route path="/user/admin/ie" element={<ImpoExpo />} />
+              <Route path="/user/lecture" element={<LecturePage />} />
+              <Route path="/user/admin/teacher" element={<Teacher />} />
+              <Route path="/user/admin/program" element={<Program />} />
+              <Route path="/user/admin/addTeacher" element={<AddTeacher />} />
+              <Route path="/user/admin/addProgram" element={<AddProgram />} />
+              <Route path="/user/admin/addSubject" element={<AddSubject />} />
+              <Route path="/user/admin/editProgram/:id" element={<EditProgram />} />
+              <Route path="/user/admin/editTeacher/:id" element={<EditTeacher />} />
+              <Route path="/user/admin/editClass/:id" element={<EditClass />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
+        </Content>
+      </Layout>
     
-    <Layout className="mainLayout">
-      <Header
-        className="site-layout-sub-header-background"
-        style={{
-          padding: 0,
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <AppHeader />
-      </Header>
-      <Content
-        style={{
-          margin: "24px 16px 0",
-          marginTop: "50px",
-          height: "100vh",
-          alignContent: "center",
-        }}
-      >
-        
-        <div className="site-layout-background" style={{ padding: 24 }}>
-          <Router primary={false}>
-            <AppHome exact path="/" />
-            <Routine path="/routine" />
-            <Login path="/user/login" />
-            <Signup path="/user/signup" />
-            <Admin exact path="/user/admin" />
-            <ImpoExpo path="/user/admin/ie" />
-            <LecturePage path="/user/lecture" />
-            <Teacher path="/user/admin/teacher" />
-            <Program path="/user/admin/program" />
-            <AddTeacher path="/user/admin/addTeacher" />
-            <AddProgram path="/user/admin/addProgram" />
-          <AddSubject path="/user/admin/addSubject" />
-            <EditProgram path="/user/admin/editProgram/:id"></EditProgram>
-            <EditTeacher path="/user/admin/editTeacher/:id"></EditTeacher>
-            <EditClass path="/user/admin/editClass/:id"></EditClass>
-          </Router>
-        </div>
-      </Content>
-    </Layout>
   );
 }
 
