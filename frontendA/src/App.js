@@ -35,7 +35,7 @@ import Signup from "./pages/Register/Signup";
 const { Header, Content } = Layout;
 
 function App() {
-  const[]
+  // const[]
   return (
     
     <Layout className="mainLayout">
