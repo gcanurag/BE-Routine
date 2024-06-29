@@ -1,23 +1,13 @@
-import React, { useEffect } from "react";
-// import { Router, Link } from "@reach/router";
-// import { Layout, Menu, Button } from "antd";
-import { Router } from "@reach/router";
+import React, { useEffect, useState } from "react";
+
+
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Layout } from "antd";
-
-
-// import { UserContext } from "./components/Contexts/UserContext";
 import Login from "./pages/Login/Login";
-// import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Profile/Admin";
-// import LabPage from "./pages/LabPage/LabPage";
-// import AddPage from "./pages/AddPage/AddPage";
-// import AllThings from "./pages/AllThings/AllThings";
 import ImpoExpo from "./pages/ImpoExpo/ImpoExpo";
 import LecturePage from "./pages/LecturePage/LecturePage";
-// import AddClass from './pages/AddClass/AddClass';
-// import Class from "./pages/AddClass/AddClass";
 import AppHeader from "./components/Common/Header";
-// import AppFooter from "./components/Common/Footer";
 import AppHome from "./components/Home/Home";
 import Routine from "./pages/Routine/Routine";
 import AddTeacher from "./components/AddTeacher/AddTeacher";
@@ -28,14 +18,14 @@ import EditTeacher from "./components/EditTeacher/EditTeacher";
 import { EditClass } from "./components/EditClass/EditClass";
 import Program from "./pages/Program/Program";
 import Teacher from "./pages/Teacher/Teacher";
-import ReactGa from "react-ga";
 import "antd/dist/antd.css";
 import "./App.css";
 import Signup from "./pages/Register/Signup";
 const { Header, Content } = Layout;
 
+
 function App() {
-  // const[]
+
   return (
     
     <Layout className="mainLayout">
@@ -60,12 +50,16 @@ function App() {
       >
         
         <div className="site-layout-background" style={{ padding: 24 }}>
-          <Router primary={false}>
+          <Router>
             <AppHome exact path="/" />
             <Routine path="/routine" />
             <Login path="/user/login" />
             <Signup path="/user/signup" />
             <Admin exact path="/user/admin" />
+            
+            {/* <Routes> */}
+              {/* <Route exact path='/user/admin' element={<Admin/> } /> */}
+            {/* </Routes> */}
             <ImpoExpo path="/user/admin/ie" />
             <LecturePage path="/user/lecture" />
             <Teacher path="/user/admin/teacher" />
