@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-// import { Redirect } from "@reach/router";
+import React, { useState } from 'react';
 import axios from "axios";
-// import { UserContext } from "../../components/Contexts/UserContext";
-import "./Login.css";
-import { backendUrl } from "../../utils/utils";
+import { backendUrl } from '../../utils/utils';
 
-export default function Signup() {
+function Signup() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -39,7 +36,6 @@ export default function Signup() {
       window.location = "/user/profile";
     }
   }
-
   return (
     <div>
       <div id="wrap" className="wrapper">
@@ -88,3 +84,5 @@ export default function Signup() {
     </div>
   );
 }
+
+export default Signup;
