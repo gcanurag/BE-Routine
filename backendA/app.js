@@ -22,7 +22,7 @@ app.set("view engine", "jade")
 app.use(cookieParser("process.env.SESSION_SECRET"))
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:7101",
     credentials: true,
   })
 )

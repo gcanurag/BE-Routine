@@ -1,0 +1,21 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontendB  # Path to your Vite frontend Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "7101:7101"  # Map port 7101 of the container to port 7101 on the host
+    environment:
+      - NODE_ENV=development  # or production if applicable
+
+  backend:
+    build:
+      context: ./backendA  # Path to your Node.js backend Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "7102:7102"  # Map port 7102 of the container to port 7102 on the host
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./backendA:/app
