@@ -192,7 +192,7 @@ export default function SpanningTable() {
                           <TableRow>
                             <TableCell align="center">Periods</TableCell>
                             <TableCell align="center">
-                              Period 1<br></br>(10:15-11:05)
+                              Period 100<br></br>(10:15-11:05)
                             </TableCell>
                             <TableCell align="center">
                               Period 2<br></br>(11:05-11:55)

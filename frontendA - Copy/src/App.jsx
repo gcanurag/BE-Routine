@@ -12,7 +12,7 @@ import ImpoExpo from "./pages/ImpoExpo/ImpoExpo";
 import LecturePage from "./pages/LecturePage/LecturePage";
 import AppHeader from "./components/Common/Header";
 import AppHome from "./components/Home/Home";
-import Routine from "./pages/Routine/Routine";
+// import Routine from "./pages/Routine/Routine";
 import AddTeacher from "./components/AddTeacher/AddTeacher";
 import AddProgram from "./components/AddProgram/AddProgram";
 import AddSubject from "./components/AddSubject/AddSubject";
@@ -67,7 +67,7 @@ function App() {
           <div className="site-layout-background" style={{ padding: 24 }}>
             <Routes>
               <Route exact path="/" element={<AppHome />} />
-              <Route path="/routine" element={<Routine />} />
+              {/* <Route path="/routine" element={<Routine />} /> */}
               <Route path="/user/login" element={<Login />} />
               <Route path="/user/signup" element={<Signup />} />
               <Route path="/user/admin" element={<Admin />} />

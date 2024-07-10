@@ -76,15 +76,14 @@ function RoutineTable(props) {
       });
     }
 
-    console.log("mf")
-    console.log(datae)
+   
     setRoutineData(datae); 
   }, [res])
 
 
   useEffect(() =>{
-    console.log('aaa')
-    console.log(routineData)
+    // console.log('aaa')
+    // console.log(routineData)
   }, [routineData])
 
 
@@ -375,107 +374,99 @@ function RoutineTable(props) {
 
   const getCell = (classData, day, colSpan, rowSpan)=>{
 
-    return(
-    <TableCell
-      key={classData.startingPeriod}
-      align="center"
-      className="border"
-      style={{ backgroundColor: "#F0F0F0" }}
-      colSpan={colSpan}
-      rowSpan={rowSpan}
-    >
-      <b>
-        {
-          classData.subject.subjectName
-        }
-        
-      </b>
-      <br></br>(
-      {!isTeacherMode?(<i>
-        {loopTeacher(
-          classData.teacherName,
-          // index,
-          classData.noOfPeriod
-        )}
-      </i>):(<i>
-        Year {classData.routineFor.year} {classData.routineFor.programName} {classData.routineFor.section}
-      </i>)}
-      )<br></br>
-      [{classData.classType}]
-
-      <br></br>
-      {!isTeacherMode?
-      <Tooltip
-        title="Add Class"
-        placement="bottom"
+    return (
+      <TableCell
+        key={classData.startingPeriod}
+        align="center"
+        className="border"
+        style={{ backgroundColor: "#F0F0F0" }}
+        colSpan={colSpan}
+        rowSpan={rowSpan}
       >
-        <Button
-          ghost
-          type="dashed"
-          size="small"
-          onClick={() =>
-            {
-              const programDetails = {
-                program: selectedOptions.program,
-                year: selectedOptions.year,
-                part: selectedOptions.part,
-                section: selectedOptions.section,
-              }
-              handleAddClassForm(programDetails, day, classData.startingPeriod);
-            }
-          }
-        >
-          a
-        </Button>
-      </Tooltip>:null}
-      {!isTeacherMode?
-      <Tooltip
-        title="Edit Class"
-        placement="bottom"
-      >
-        <Button
-          ghost
-          type="dashed"
-          size="small"
-          onClick={() =>
-            {
-              const programDetails = {
-                program: selectedOptions.program,
-                year: selectedOptions.year,
-                part: selectedOptions.part,
-                section: selectedOptions.section,
-              }
-              handleEditClassForm(
-              programDetails,
-              day,
-              classData.startingPeriod,
-              classData
+        <b>{classData.subject.subjectName}</b>
+        <br></br>(
+        {!isTeacherMode ? (
+          <i>
+            {loopTeacher(
+              // TODO
+              classData.teacherName,
+              // index,
+              classData.noOfPeriod
             )}
-          }
-        >
-          e
-        </Button>
-      </Tooltip>:null}
-      {!isTeacherMode?
-      <Tooltip
-        title="Delete Class"
-        placement="bottom"
-      >
-        <Button
-          ghost
-          type="dashed"
-          size="small"
-          onClick={() =>
-            handleDeleteClassForm(
-              classData._id
-            )
-          }
-        >
-          d
-        </Button>
-      </Tooltip>:null}
-    </TableCell>
-    )
+          </i>
+        ) : (
+          <i>
+            Year {classData.routineFor.year} {classData.routineFor.programName}{" "}
+            {classData.routineFor.section}
+          </i>
+        )}
+        )<br></br>[{classData.classType}]
+        <br />
+        <span>remarks()</span>
+        <br></br>
+        {!isTeacherMode ? (
+          <Tooltip title="Add Class" placement="bottom">
+            <Button
+              ghost
+              type="dashed"
+              size="small"
+              onClick={() => {
+                const programDetails = {
+                  program: selectedOptions.program,
+                  year: selectedOptions.year,
+                  part: selectedOptions.part,
+                  section: selectedOptions.section,
+                };
+                handleAddClassForm(
+                  programDetails,
+                  day,
+                  classData.startingPeriod
+                );
+              }}
+            >
+              a
+            </Button>
+          </Tooltip>
+        ) : null}
+        {!isTeacherMode ? (
+          <Tooltip title="Edit Class" placement="bottom">
+            <Button
+              ghost
+              type="dashed"
+              size="small"
+              onClick={() => {
+                const programDetails = {
+                  program: selectedOptions.program,
+                  year: selectedOptions.year,
+                  part: selectedOptions.part,
+                  section: selectedOptions.section,
+                };
+                handleEditClassForm(
+                  programDetails,
+                  day,
+                  classData.startingPeriod,
+                  classData
+                );
+              }}
+            >
+              e
+            </Button>
+          </Tooltip>
+        ) : null}
+        {!isTeacherMode ? (
+          <Tooltip title="Delete Class" placement="bottom">
+            <Button
+              ghost
+              type="dashed"
+              size="small"
+              onClick={() => handleDeleteClassForm(classData._id)}
+            >
+              d
+            </Button>
+          </Tooltip>
+        ) : null}
+      </TableCell>
+    );
   }
 
   // NOTE: data format
@@ -553,12 +544,17 @@ function RoutineTable(props) {
                           console.log(row)
                           return(
                             <TableRow>
+                            
                               {row.map((cell, index) => {
                                 if (!cell.open && cell.dayShow)
                                   return(
                                   <TableCell rowSpan={cell.rowSpan} colSpan={cell.colSpan}>
-                                    {cell.data}
-                                  </TableCell>)
+                                      {cell.data}
+                                      {/* hello */}
+                                      </TableCell>
+                                    // <>
+
+                                  )
                                 
                                 
                                 if (!cell.open && cell.data == undefined)

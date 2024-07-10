@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { backendUrl } from '../../utils/utils';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  // const { user, setUser } = useContext(UserContext);
+  
+  const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
   // axios.defaults.headers.common["x-auth-token"];
@@ -31,9 +33,10 @@ function Signup() {
 
     if (userData) {
       localStorage.setItem("user", userData.username);
-      // setUser(userData.username);
-      // console.log("context user: ", user);
-      window.location = "/user/profile";
+      console.log("anurag");
+     
+      navigate("/user/profile");
+      console.log("here");
     }
   }
   return (
