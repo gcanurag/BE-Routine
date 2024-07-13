@@ -83,7 +83,8 @@ router.get("/program/:programID/weekly", async (req, res) => {
     let allClasses = await Class.find({routineFor: routineFor})
       .populate(populateQuery)
       .lean()
-    // console.log(allClasses);
+    console.log(allClasses);
+    // return;
     if (allClasses.length == 0){
       const dummyClass = {
         routineFor: routineFor,
@@ -294,6 +295,7 @@ router.get("/available/teacher/:teacherID/day/:day/period/:periodNo/nperiods/:np
 // add class to db
 router.post("/", async function (req, res) {
   console.log(req.body);
+  // return;
   const {
     routineFor,
     subjectID,
@@ -303,6 +305,7 @@ router.post("/", async function (req, res) {
     startingPeriod,
     noOfPeriod,
     weekDay,
+    remarks
   } = req.body
 
   try {
@@ -315,6 +318,7 @@ router.post("/", async function (req, res) {
       startingPeriod: startingPeriod,
       noOfPeriod: noOfPeriod,
       weekDay: weekDay,
+      remarks:remarks
     })
     console.log(newClass)
     await newClass.save()

@@ -103,6 +103,7 @@ class AddClassPopupForm extends Component {
       courseCode: values.courseCode,
       link1: values.link1,
       weekDay: day,
+      remarks:"remarks",
     })
     .then(message.success("Class Added Sucessfully"));
       

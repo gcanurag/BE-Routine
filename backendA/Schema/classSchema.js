@@ -42,6 +42,10 @@ var classSchema = new mongoose.Schema({
         type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
             'Friday'], required: false
     },
+    remarks:{
+        type:String,
+        required:false
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Class', classSchema);
