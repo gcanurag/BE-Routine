@@ -1,4 +1,4 @@
-export const backendUrl = "http://localhost:7102";
+export const backendUrl = "http://routine-backend.bct.itclub.pp.ua";
 
 export const apiClassUrl = backendUrl + "/api/class";
 export const apiTeacherUrl = backendUrl + "/user/admin/api/teacher";
