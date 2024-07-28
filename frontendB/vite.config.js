@@ -7,7 +7,7 @@ export default defineConfig({
     port: 7101, 
     proxy: {
       '/api': {
-        target: 'http://localhost:7101', 
+        target: 'http://routine-backend.bct.itclub.pp.ua', 
         changeOrigin: true,
         secure: false,
       },
