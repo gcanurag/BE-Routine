@@ -22,10 +22,10 @@ app.set("view engine", "jade")
 app.use(cookieParser("process.env.SESSION_SECRET"))
 app.use(
   cors({
-    origin: "http://localhost:7101",
+    origin: '*',
     credentials: true,
   })
-)
+);
 
  mongoose.connect(
   "mongodb+srv://anrggc7:AE16VVgFT70PJa9P@cluster0.ovhkx9a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
