@@ -69,9 +69,7 @@ function RoutineTable(props) {
         if (!datae[item.weekDay]) {
           datae[item.weekDay] = [];
         }
-        // if (!datae[item.weekDay][item.startingPeriod]) {
-        //   datae[item.weekDay][item.startingPeriod] = [];
-        // }
+        
         datae[item.weekDay].push(item);
       });
     }
@@ -155,10 +153,10 @@ function RoutineTable(props) {
       
     }
 
-    console.log("mid");
-    console.log(classes);
-    console.log(rowTable);
-    console.log(n)
+    // console.log("mid");
+    // console.log(classes);
+    // console.log(rowTable);
+    // console.log(n)
     
     let classTable = createRows(n);
     console.log(classTable);
@@ -191,9 +189,6 @@ function RoutineTable(props) {
       }
 
     }
-
-    
-
     return classTable;
   }
 
@@ -373,7 +368,8 @@ function RoutineTable(props) {
   }
 
   const getCell = (classData, day, colSpan, rowSpan)=>{
-
+    console.log(classData.remarks)
+    const remarks=classData.remarks;
     return (
       <TableCell
         key={classData.startingPeriod}
@@ -402,7 +398,7 @@ function RoutineTable(props) {
         )}
         )<br></br>[{classData.classType}]
         <br />
-        <span>remarks()</span>
+        <span>{remarks}</span>
         <br></br>
         {!isTeacherMode ? (
           <Tooltip title="Add Class" placement="bottom">
