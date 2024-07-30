@@ -89,7 +89,7 @@ const RoutineSelectionComponent = forwardRef(({setSelectedOptionsParent, setResp
         }
         let {data:res} = await axios.get(apiClassUrl + programIDparam);
         // console.log(res.data)
-        console.log(res.data[11].remarks)
+        console.log(res.data)
         setResponseParent(res);
         setSelectedProgramID(id)
       
